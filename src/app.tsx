@@ -1,6 +1,7 @@
 // 运行时配置
+import { BulbOutlined, LogoutOutlined } from '@ant-design/icons';
 import { RequestConfig, RunTimeLayoutConfig } from '@umijs/max';
-import { message } from 'antd';
+import { Dropdown, message } from 'antd';
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
 export async function getInitialState(): Promise<{
@@ -16,6 +17,7 @@ export async function getInitialState(): Promise<{
 
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   //initialState上面登录函数返回的信息
+
   return {
     logo: 'https://github.com/XiaoRongwen/imgs/blob/master/logo.png?raw=true', //左上角Logo
     title: 'xxxx运营平台', //左上角Logo后面的名字
@@ -27,7 +29,31 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     avatarProps: {
       src: initialState?.avatar || undefined, //右上角头像
       title: initialState?.name || '用户', //右上角名称
+      size: 'small',
+      render: (props, dom) => {
+        return (
+          <Dropdown
+            menu={{
+              items: [
+                {
+                  key: 'logout',
+                  icon: <LogoutOutlined />,
+                  label: '退出登录',
+                },
+                {
+                  key: 'theam',
+                  icon: <BulbOutlined />,
+                  label: '切换主题',
+                },
+              ],
+            }}
+          >
+            {dom}
+          </Dropdown>
+        );
+      },
     },
+    // actionsRender: () => [<InfoCircleFilled key="InfoCircleFilled" />],
     token: {
       //菜单的样式配置
       //   colorBgAppListIconHover: 'rgba(0,0,0,0.06)',
