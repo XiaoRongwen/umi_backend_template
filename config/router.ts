@@ -19,6 +19,25 @@ const routes = [
     component: './Table',
   },
   {
+    name: '客户管理',
+    path: '/customer-manage',
+    component: './CustomerManage',
+    routes: [
+      {
+        name: ' 客户列表',
+        icon: 'TeamOutlined',
+        path: '/customer-manage/customer-list',
+        component: './CustomerManage/CustomerList',
+      },
+      {
+        name: ' 客户认证',
+        icon: 'FileProtectOutlined',
+        path: '/customer-manage/authentication',
+        component: './CustomerManage/ClientAuthentication',
+      },
+    ],
+  },
+  {
     name: 'Login',
     path: '/login',
     component: './Login',
