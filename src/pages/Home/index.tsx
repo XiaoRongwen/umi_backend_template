@@ -9,6 +9,7 @@ const HomePage: React.FC = () => {
   return (
     <PageContainer ghost>
       <div className={styles.container}>
+        <h1>我我我我我</h1>
         <Guide name={trim(name)} />
       </div>
     </PageContainer>
