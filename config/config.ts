@@ -1,7 +1,10 @@
 import { defineConfig } from '@umijs/max';
 import routes from './router';
 export default defineConfig({
-  antd: {},
+  antd: {
+    configProvider: {},
+    appConfig: {},
+  },
   access: {},
   model: {},
   initialState: {},
